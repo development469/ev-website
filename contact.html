@@ -6,7 +6,7 @@
   <title>Contact — ev</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -26,9 +26,9 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="brand-story.html">ev Story</a></li>
         <li><a href="bespoke.html">ev Bespoke</a></li>
-        <li><a href="collection.html">Our Collection</a></li>
+        <li><a href="collection.html">Collection</a></li>
         <li><a href="projects.html">Creative Curation</a></li>
-        <li><a href="contact.html" aria-current="page">Contact</a></li>
+        <li><a href="contact.html" class="nav-cta" aria-current="page">Contact</a></li>
       </ul>
     </nav>
     <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
@@ -39,12 +39,12 @@
   <section class="page-hero">
     <div class="wrap">
       <span class="eyebrow">Say hello</span>
-      <h1 class="reveal">Let’s make something for your home.</h1>
+      <h1 class="reveal">Let’s make something for your <span style="color:var(--coral);">home.</span></h1>
       <p class="reveal d1">Questions, bespoke enquiries, export &amp; wholesale — we’d love to hear from you.</p>
     </div>
   </section>
 
-  <section style="padding-top:44px;">
+  <section style="padding-top:20px;">
     <div class="wrap">
       <div class="contact-grid">
         <div class="contact-card reveal">
@@ -61,30 +61,18 @@
         </div>
       </div>
 
-      <p class="todo-note" style="margin-bottom:36px;">Phone &amp; email — to be added once confirmed by the client.</p>
+      <p class="todo-note" style="margin-bottom:34px;">Phone &amp; email — to be added once confirmed by the client.</p>
 
       <form class="contact-form reveal">
         <div class="row">
-          <div>
-            <label for="name">Name</label>
-            <input id="name" name="name" type="text" placeholder="Your name" />
-          </div>
-          <div>
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="you@example.com" />
-          </div>
+          <div><label for="name">Name</label><input id="name" name="name" type="text" placeholder="Your name" /></div>
+          <div><label for="email">Email</label><input id="email" name="email" type="email" placeholder="you@example.com" /></div>
         </div>
-        <div>
-          <label for="subject">I’m interested in</label>
-          <input id="subject" name="subject" type="text" placeholder="Collection · Bespoke · Export / wholesale" />
-        </div>
-        <div>
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="5" placeholder="Tell us what you have in mind…"></textarea>
-        </div>
-        <button type="submit" class="btn">Send message</button>
+        <div><label for="subject">I’m interested in</label><input id="subject" name="subject" type="text" placeholder="Collection · Bespoke · Export / wholesale" /></div>
+        <div><label for="message">Message</label><textarea id="message" name="message" rows="5" placeholder="Tell us what you have in mind…"></textarea></div>
+        <button type="submit" class="btn btn-coral">Send message <span class="arrow">→</span></button>
       </form>
-      <!-- TODO: wire this form to an email service / backend once the client confirms how enquiries should route -->
+      <!-- TODO: wire this form to an email service / Netlify Forms once enquiry routing is confirmed -->
     </div>
   </section>
 </main>
@@ -102,7 +90,7 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="brand-story.html">ev Story</a></li>
         <li><a href="bespoke.html">ev Bespoke</a></li>
-        <li><a href="collection.html">Our Collection</a></li>
+        <li><a href="collection.html">Collection</a></li>
         <li><a href="projects.html">Creative Curation</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>

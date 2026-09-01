@@ -1,99 +1,70 @@
-// ev — galleries + interactions
-// Galleries render from the arrays in js/data.js. Add a photo there and it
-// appears here automatically — no HTML editing per image.
+// ev — v2 interactions: typewriter hero, full-bleed gallery, reveal, header UI.
+// Galleries render from the arrays in js/data.js.
 
-function galleryItemHTML(item, showCaption) {
+function pad(n) { return String(n).padStart(2, '0') }
+
+function tileHTML(item, i, href) {
   const media = item.image
     ? `<img src="${item.image}" alt="${item.name}" loading="lazy" />`
-    : `<div class="image-placeholder">${item.name} — photo pending</div>`
-  const caption = showCaption
-    ? `<div class="caption">
-         ${item.category ? `<p class="caption-category">${item.category}</p>` : ''}
-         <p class="caption-name">${item.name}</p>
-       </div>`
-    : ''
-  return `<div class="item reveal">${media}${caption}</div>`
+    : `<div class="image-placeholder">${item.name}<br>photo pending</div>`
+  const cat = item.category ? `<span class="cat">${item.category}</span>` : ''
+  return `<a class="tile reveal" href="${href}">
+    <span class="num">${pad(i + 1)}</span>
+    ${media}
+    <span class="meta">${cat}<span class="name">${item.name}</span></span>
+    <span class="go">&#8599;</span>
+  </a>`
 }
 
-function renderGallery(containerId, items, { showCaption = true } = {}) {
+function renderGallery(containerId, items, href = 'collection.html') {
   const el = document.getElementById(containerId)
   if (!el) return
-  el.innerHTML = items.map((i) => galleryItemHTML(i, showCaption)).join('')
+  el.innerHTML = items.map((it, i) => tileHTML(it, i, href)).join('')
 }
 
-function renderCertifications(containerId, items) {
+function renderBadges(containerId, items) {
   const el = document.getElementById(containerId)
+  if (!el || !items || !items.length) return
+}
+
+// ---- Typewriter ----
+function initTypewriter() {
+  const el = document.getElementById('typewriter')
   if (!el) return
-  if (!items || items.length === 0) {
-    el.innerHTML = '<p class="todo-note">Certification logos to be added — placeholders shown below.</p>'
-    return
+  let phrases
+  try { phrases = JSON.parse(el.dataset.phrases) } catch { phrases = [el.textContent] }
+  if (!phrases || !phrases.length) return
+  let p = 0, c = 0, deleting = false
+  const type = () => {
+    const word = phrases[p]
+    c += deleting ? -1 : 1
+    el.textContent = word.slice(0, c)
+    let delay = deleting ? 45 : 85
+    if (!deleting && c === word.length) { delay = 1600; deleting = true }
+    else if (deleting && c === 0) { deleting = false; p = (p + 1) % phrases.length; delay = 350 }
+    setTimeout(type, delay)
   }
-  el.innerHTML = `<div class="cert-logos">${items
-    .map((c) => `<img src="${c.logo}" alt="${c.name}" />`)
-    .join('')}</div>`
+  type()
 }
 
-// ---- scroll reveal ----
+// ---- Scroll reveal ----
 function initReveal() {
   const els = document.querySelectorAll('.reveal')
-  if (!('IntersectionObserver' in window)) {
-    els.forEach((e) => e.classList.add('in'))
-    return
-  }
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in')
-          io.unobserve(entry.target)
-        }
-      })
-    },
-    { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
-  )
+  if (!('IntersectionObserver' in window)) { els.forEach((e) => e.classList.add('in')); return }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) } })
+  }, { threshold: 0.1, rootMargin: '0px 0px -6% 0px' })
   els.forEach((e) => io.observe(e))
 }
 
-// ---- animated stat counters ----
-function initCounters() {
-  const nums = document.querySelectorAll('.stat .num[data-count]')
-  if (!nums.length) return
-  const run = (el) => {
-    const target = parseFloat(el.dataset.count)
-    const suffix = el.dataset.suffix || ''
-    const dur = 1400
-    const start = performance.now()
-    const step = (now) => {
-      const p = Math.min((now - start) / dur, 1)
-      const eased = 1 - Math.pow(1 - p, 3)
-      const val = target * eased
-      el.textContent = (target % 1 ? val.toFixed(1) : Math.round(val)) + suffix
-      if (p < 1) requestAnimationFrame(step)
-    }
-    requestAnimationFrame(step)
-  }
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          run(entry.target)
-          io.unobserve(entry.target)
-        }
-      })
-    },
-    { threshold: 0.6 }
-  )
-  nums.forEach((n) => io.observe(n))
-}
-
-// ---- header state + back to top ----
+// ---- Header state + back to top ----
 function initScrollUI() {
   const header = document.querySelector('.site-header')
   const toTop = document.querySelector('.to-top')
   const onScroll = () => {
     const y = window.scrollY
-    if (header) header.classList.toggle('scrolled', y > 20)
-    if (toTop) toTop.classList.toggle('show', y > 600)
+    if (header) header.classList.toggle('scrolled', y > 16)
+    if (toTop) toTop.classList.toggle('show', y > 700)
   }
   window.addEventListener('scroll', onScroll, { passive: true })
   onScroll()
@@ -102,28 +73,21 @@ function initScrollUI() {
 
 document.addEventListener('DOMContentLoaded', () => {
   if (typeof COLLECTION_ITEMS !== 'undefined') {
-    renderGallery('collection-preview', COLLECTION_ITEMS.slice(0, 6))
-    renderGallery('collection-full', COLLECTION_ITEMS)
+    renderGallery('collection-full', COLLECTION_ITEMS, 'collection.html')
+    renderGallery('collection-preview', COLLECTION_ITEMS, 'collection.html')
   }
   if (typeof PROJECT_ITEMS !== 'undefined') {
-    renderGallery('projects-gallery', PROJECT_ITEMS, { showCaption: true })
-  }
-  if (typeof CERTIFICATIONS !== 'undefined') {
-    renderCertifications('cert-logos', CERTIFICATIONS)
+    renderGallery('projects-gallery', PROJECT_ITEMS, 'projects.html')
   }
 
-  // nav toggle
   const navToggle = document.querySelector('.nav-toggle')
   const navLinks = document.querySelector('.nav-links')
   if (navToggle && navLinks) {
     navToggle.addEventListener('click', () => navLinks.classList.toggle('open'))
-    navLinks.querySelectorAll('a').forEach((a) =>
-      a.addEventListener('click', () => navLinks.classList.remove('open'))
-    )
+    navLinks.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => navLinks.classList.remove('open')))
   }
 
+  initTypewriter()
   initScrollUI()
-  initCounters()
-  // reveal runs last so freshly-rendered gallery items are observed too
   initReveal()
 })
