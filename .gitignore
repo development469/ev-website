@@ -1,0 +1,12 @@
+# OS / editor junk
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+.vscode/
+
+# Dependencies (none needed for this static site, but just in case)
+node_modules/
+
+# Netlify local state
+.netlify/
