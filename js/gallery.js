@@ -9,10 +9,11 @@ function tileHTML(item, i, href) {
     : `<div class="image-placeholder">${item.name}<br>photo pending</div>`
   const cat = item.category ? `<span class="cat">${item.category}</span>` : ''
   return `<a class="tile reveal" href="${href}">
-    <span class="num">${pad(i + 1)}</span>
-    ${media}
-    <span class="meta">${cat}<span class="name">${item.name}</span></span>
-    <span class="go">&#8599;</span>
+    <div class="thumb"><span class="num">${pad(i + 1)}</span>${media}</div>
+    <div class="meta">
+      <span class="txt">${cat}<span class="name">${item.name}</span></span>
+      <span class="go">&#8599;</span>
+    </div>
   </a>`
 }
 
