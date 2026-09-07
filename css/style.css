@@ -206,11 +206,11 @@ section { padding: 100px 0; }
 .quote-feature { background: var(--ink); color: #fff; text-align: center; padding: 76px 8%; }
 .quote-feature q { display: block; font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: clamp(1.5rem, 3.6vw, 2.6rem); line-height: 1.3; max-width: 22ch; margin: 0 auto; }
 .quote-feature .by { display: block; margin-top: 22px; font-family: var(--font-display); font-weight: 600; font-size: 0.82rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mustard); }
-.quotebar { background: var(--mustard); color: var(--ink); overflow: hidden; white-space: nowrap; padding: 20px 0; }
-.quotebar__track { display: inline-flex; gap: 64px; animation: marquee 34s linear infinite; will-change: transform; }
+.quotebar { background: var(--ink); color: #fff; overflow: hidden; white-space: nowrap; padding: 20px 0; }
+.quotebar__track { display: inline-flex; gap: 60px; animation: marquee 34s linear infinite; will-change: transform; }
 .quotebar:hover .quotebar__track { animation-play-state: paused; }
-.quotebar q { font-family: var(--font-display); font-style: italic; font-weight: 600; font-size: clamp(1.05rem, 2.3vw, 1.6rem); display: inline-flex; align-items: center; gap: 64px; }
-.quotebar q::after { content: "✦"; font-style: normal; font-size: 0.6em; }
+.quotebar span { font-family: var(--font-display); font-style: normal; font-weight: 600; font-size: clamp(1.05rem, 2.3vw, 1.55rem); display: inline-flex; align-items: center; gap: 60px; }
+.quotebar span::after { content: "✦"; color: var(--mustard); font-size: 0.6em; }
 
 /* ---------- Image with mustard border ---------- */
 .framed-mustard { border: 10px solid var(--mustard); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
@@ -223,13 +223,32 @@ section { padding: 100px 0; }
 .testimonial .by { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; }
 .testimonial .role { color: var(--ink-soft); font-size: 0.9rem; }
 
-/* ---------- ev story split (mustard block + framed picture) ---------- */
-.split-story { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: stretch; }
-.story-copy { padding: 54px 48px; border-radius: var(--radius); display: flex; flex-direction: column; justify-content: center; }
-.story-copy h2 { font-size: clamp(1.9rem, 3.6vw, 2.9rem); margin: 14px 0 16px; }
-.story-copy p { margin: 0 0 14px; }
+/* ---------- ev story split (white text + image collage) ---------- */
+.split-story { display: grid; grid-template-columns: 1fr 1.05fr; gap: 44px; align-items: center; }
+.story-copy { padding: 6px 0; display: flex; flex-direction: column; justify-content: center; }
+.story-copy h2 { font-size: clamp(2rem, 4vw, 3.2rem); margin: 14px 0 18px; }
+.story-copy p { margin: 0 0 14px; color: var(--ink-soft); font-size: 1.05rem; }
+.story-collage { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.story-collage img { width: 100%; height: 100%; object-fit: cover; border-radius: 16px; aspect-ratio: 1 / 1; }
+.story-collage img:nth-child(1) { grid-row: span 2; aspect-ratio: 3 / 5; }
 .framed-mustard { min-height: 360px; }
-@media (max-width: 900px) { .split-story { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { .split-story { grid-template-columns: 1fr; gap: 28px; } .story-collage img:nth-child(1) { grid-row: auto; aspect-ratio: 1 / 1; } }
+
+/* ---------- Hero image slider (cross-fade) ---------- */
+.hero-slider { position: relative; width: 100%; height: 100%; }
+.hero-slider .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.1s ease; }
+.hero-slider .slide.active { opacity: 1; }
+.hero-slider .slide img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ---------- Creative testimonial (mustard card) ---------- */
+.testi { max-width: 720px; margin: 0 auto; position: relative; }
+.testi-card { background: var(--mustard); color: var(--ink); border-radius: 26px; padding: 56px 46px 44px; position: relative; text-align: center; }
+.testi-mark { position: absolute; top: -28px; right: 34px; width: 66px; height: 66px; border-radius: 18px; background: var(--ink); color: var(--mustard); display: grid; place-items: center; font-family: var(--font-display); font-weight: 700; font-size: 2.6rem; line-height: 0; padding-top: 18px; }
+.testi-stars { color: var(--ink); font-size: 1.15rem; letter-spacing: 5px; margin-bottom: 16px; }
+.testi-quote { font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: clamp(1.3rem, 2.9vw, 2rem); line-height: 1.35; margin: 0; }
+.testi-avatar { width: 74px; height: 74px; border-radius: 50%; background: var(--ink); color: var(--mustard); display: grid; place-items: center; font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; margin: 34px auto 12px; border: 4px solid #fff; }
+.testi .by { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; }
+.testi .role { color: rgba(20,20,22,0.72); font-size: 0.9rem; }
 
 /* ---------- Colour-block panel (story / about) ---------- */
 .panel { border-radius: 0; }

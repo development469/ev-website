@@ -48,6 +48,20 @@ function initTypewriter() {
   type()
 }
 
+// ---- Hero image slider (cross-fade, infinite loop) ----
+function initSlider() {
+  const slider = document.getElementById('hero-slider')
+  if (!slider) return
+  const slides = [...slider.querySelectorAll('.slide')]
+  if (slides.length < 2) return
+  let i = 0
+  setInterval(() => {
+    slides[i].classList.remove('active')
+    i = (i + 1) % slides.length
+    slides[i].classList.add('active')
+  }, 3800)
+}
+
 // ---- Scroll reveal ----
 function initReveal() {
   const els = document.querySelectorAll('.reveal')
@@ -89,6 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   initTypewriter()
+  initSlider()
   initScrollUI()
   initReveal()
 })

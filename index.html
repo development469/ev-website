@@ -51,16 +51,24 @@
       <div class="hero-media reveal d2">
         <span class="blk blk-1"></span>
         <span class="blk blk-2"></span>
-        <div class="frame"><img src="images/hero/hero-homeware.webp" alt="Artisan homeware styled on open shelving" /></div>
+        <div class="frame">
+          <div class="hero-slider" id="hero-slider">
+            <div class="slide active"><img src="images/hero/hero-homeware.webp" alt="Artisan homeware styled on open shelving" /></div>
+            <div class="slide"><img src="images/collection/gold-leopard-box.webp" alt="Gold leopard box styled in a living room" /></div>
+            <div class="slide"><img src="images/collection/cappuccino-platter.webp" alt="Cappuccino platter in a kitchen setting" /></div>
+          </div>
+        </div>
         <div class="hero-badge">100%<br>MADE IN<br>INDIA</div>
       </div>
     </div>
   </section>
 
-  <!-- SINGLE QUOTE (replaces word marquee) -->
-  <div class="quote-feature reveal">
-    <q>When you buy an ev object, you don’t just buy an item — you buy a piece of the artist.</q>
-    <span class="by">— the ev promise</span>
+  <!-- SCROLLING QUOTE BAND (below hero) -->
+  <div class="quotebar" aria-hidden="true">
+    <div class="quotebar__track">
+      <span>“When you buy an ev object, you don’t just buy an item — you buy a piece of the artist.”</span><span>the ev promise</span>
+      <span>“When you buy an ev object, you don’t just buy an item — you buy a piece of the artist.”</span><span>the ev promise</span>
+    </div>
   </div>
 
   <!-- FULL GALLERY -->
@@ -79,52 +87,43 @@
     </div>
   </section>
 
-  <!-- SCROLLING QUOTE DIVIDER -->
+  <!-- SCROLLING BRAND BAR (below collection) -->
   <div class="quotebar" aria-hidden="true" style="margin-top:90px;">
     <div class="quotebar__track">
-      <q>Every ev piece carries the hand that made it</q><q>Made in India, with love</q>
-      <q>Every ev piece carries the hand that made it</q><q>Made in India, with love</q>
+      <span>Every ev piece carries the hand that made it</span><span>Made in India, with love</span>
+      <span>Every ev piece carries the hand that made it</span><span>Made in India, with love</span>
     </div>
   </div>
 
-  <!-- ev STORY (mustard block + framed picture) -->
+  <!-- ev STORY (white text + image collage) -->
   <section>
     <div class="wrap split-story">
-      <div class="story-copy bg-mustard reveal">
+      <div class="story-copy reveal">
         <span class="eyebrow">Our story</span>
         <h2>Two makers,<br>one home.</h2>
         <p>ev is the story of a father and a daughter — one a veteran of India’s brass trade, the other a luxury marketer in New Delhi. Together they build homeware that is authentically <strong>Made in India</strong>: plastic-free, chemical-free, and shaped by the country’s finest artisans.</p>
         <p style="margin-top:6px;"><a class="link-arrow" href="brand-story.html">Read the full story</a></p>
       </div>
-      <div class="framed-mustard reveal d1">
-        <img src="images/story/heritage.webp" alt="Heritage craft object" />
+      <div class="story-collage reveal d1">
+        <img src="images/collection/tan-round-tray.webp" alt="Tan round tray, styled" />
+        <img src="images/collection/gold-leopard-box.webp" alt="Gold leopard box, styled" />
+        <img src="images/collection/cappuccino-platter.webp" alt="Cappuccino platter, in a kitchen" />
       </div>
     </div>
   </section>
 
-  <!-- FEATURE CARDS -->
-  <section style="padding-top:20px;">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <h2 class="section-title">Made with <span class="mark">intent.</span></h2>
-        <a class="link-arrow" href="brand-story.html">The philosophy</a>
-      </div>
-      <div class="cards">
-        <div class="card reveal"><div class="emoji">🪔</div><h3>Made in India</h3><p>Rooted in Indian craft heritage — Moradabad brass, marble, and honest materials shaped by hand.</p></div>
-        <div class="card reveal d1"><div class="emoji">🌿</div><h3>Plastic &amp; chemical-free</h3><p>Clean by design. Natural materials, no shortcuts — made with love by the best Indian artisans.</p></div>
-        <div class="card reveal d2"><div class="emoji">✦</div><h3>Detail you can feel</h3><p>For those who won’t settle for ordinary — objects with history, character, and quiet luxury.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIAL (replaces Creative Curation) -->
+  <!-- TESTIMONIAL -->
   <section class="section-cream" style="background:var(--bg-soft);">
     <div class="wrap">
-      <div class="testimonial reveal">
-        <div class="stars">★★★★★</div>
-        <q>Work done by us with unconditional love and pure devotion goes straight in the category of divine and immortal craft.</q>
-        <p class="by">Aditi Gupta</p>
-        <p class="role">Artrepreneur, ev</p>
+      <div class="testi reveal">
+        <div class="testi-card">
+          <div class="testi-mark">&rdquo;</div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">Work done by us with unconditional love and pure devotion goes straight in the category of divine and immortal craft.</p>
+          <div class="testi-avatar">AG</div>
+          <p class="by">Aditi Gupta</p>
+          <p class="role">Artrepreneur, ev</p>
+        </div>
       </div>
     </div>
   </section>
