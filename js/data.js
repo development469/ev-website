@@ -14,6 +14,7 @@ const COLLECTION_ITEMS = [
   { name: 'Black Glass Leopard Tray', category: 'Trays', image: 'images/collection/black-glass-leopard-tray.webp' },
   { name: 'Light Brown Fabric Tray', category: 'Trays', image: 'images/collection/lt-brown-fabric-tray.webp' },
   { name: 'Gold Scalloped Frame', category: 'Frames', image: 'images/collection/metal-photo-frame.webp' },
+  { name: 'Rose Gold Tissue Box', category: 'Home', image: 'images/collection/rose-gold-tissue-box.webp' },
   { name: 'Black Marble Coasters, Set of 4', category: 'Tabletop', image: 'images/collection/black-marble-coasters.webp' },
   { name: 'Black Marble Tissue Box', category: 'Home', image: 'images/collection/black-marble-tissue-box.webp' },
   { name: 'Ludo Board', category: 'Games', image: 'images/collection/ludo-set.webp' },
