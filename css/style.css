@@ -107,13 +107,15 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing:
 @media (max-width: 900px) {
   .nav-toggle { display: block; }
   .nav-links {
-    position: absolute; top: 100%; left: 0; right: 0;
-    background: #fff; flex-direction: column; align-items: stretch;
-    padding: 16px 24px 24px; gap: 6px;
-    border-bottom: 1px solid var(--line); box-shadow: var(--shadow); display: none;
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; height: 100dvh; z-index: 55;
+    background: #fff;
+    flex-direction: column; align-items: center; justify-content: center;
+    gap: 6px; padding: 96px 24px 48px; display: none;
   }
   .nav-links.open { display: flex; }
-  .nav-links a { padding: 12px 14px; font-size: 1rem; }
+  .nav-links a { padding: 14px 26px; font-size: 1.6rem; border-radius: 999px; }
+  .nav-toggle { position: relative; z-index: 62; }
+  .site-header .logo { position: relative; z-index: 62; }
 }
 
 /* ---------- Buttons ---------- */
@@ -280,7 +282,7 @@ section { padding: 100px 0; }
 .story-collage img, .story-collage video { width: 100%; height: 100%; object-fit: cover; border-radius: 16px; aspect-ratio: 1 / 1; display: block; }
 .story-collage > :first-child { grid-row: span 2; aspect-ratio: 3 / 5; }
 .framed-mustard { min-height: 360px; }
-@media (max-width: 900px) { .split-story { grid-template-columns: 1fr; gap: 28px; } .story-collage > :first-child { grid-row: auto; aspect-ratio: 1 / 1; } }
+@media (max-width: 900px) { .split-story { grid-template-columns: 1fr; gap: 28px; } }
 
 /* ---------- Hero image slider (cross-fade) ---------- */
 .hero-slider { position: relative; width: 100%; height: 100%; }
@@ -475,7 +477,8 @@ form.contact-form button { align-self: flex-start; border: none; cursor: pointer
   .cards { grid-template-columns: 1fr; }
   .steps { grid-template-columns: 1fr 1fr; }
   .quotes, .contact-grid { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+  .site-footer .footer-grid { grid-template-columns: 1fr; gap: 30px; padding: 72px 20px 40px; }
+  .footer-grid .brand { font-size: 2rem; }
 }
 @media (max-width: 560px) {
   .wrap { padding: 0 20px; }
