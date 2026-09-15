@@ -31,3 +31,21 @@ const PROJECT_ITEMS = [
 ]
 
 const CERTIFICATIONS = []
+
+// Auto-scrolling media carousel (collection page). Images + videos interleaved.
+const CARO_BASE = 'images/collection/auto-caro/'
+const CARO_ITEMS = [
+  { type: 'img', src: CARO_BASE + 'img-01.webp' },
+  { type: 'img', src: CARO_BASE + 'img-02.webp' },
+  { type: 'img', src: CARO_BASE + 'img-03.webp' },
+  { type: 'img', src: CARO_BASE + 'img-04.webp' },
+  { type: 'video', src: CARO_BASE + 'video-1.mp4', poster: CARO_BASE + 'video-1-poster.webp' },
+  { type: 'img', src: CARO_BASE + 'img-05.webp' },
+  { type: 'img', src: CARO_BASE + 'img-06.webp' },
+  { type: 'img', src: CARO_BASE + 'img-07.webp' },
+  { type: 'img', src: CARO_BASE + 'img-08.webp' },
+  { type: 'img', src: CARO_BASE + 'img-09.webp' },
+  { type: 'video', src: CARO_BASE + 'video-2.mp4', poster: CARO_BASE + 'video-2-poster.webp' },
+  { type: 'img', src: CARO_BASE + 'img-10.webp' },
+  { type: 'img', src: CARO_BASE + 'img-11.webp' },
+]

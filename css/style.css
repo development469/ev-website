@@ -212,6 +212,37 @@ section { padding: 100px 0; }
 .quotebar span { font-family: var(--font-display); font-style: normal; font-weight: 600; font-size: clamp(1.05rem, 2.3vw, 1.55rem); display: inline-flex; align-items: center; gap: 60px; }
 .quotebar span::after { content: "✦"; color: var(--mustard); font-size: 0.6em; }
 
+/* ---------- Auto-scrolling media carousel ---------- */
+.caro-section { padding: 80px 0; overflow: hidden; }
+.caro-viewport {
+  width: 100%; overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+.caro-track { display: flex; gap: 18px; width: max-content; animation: caro 55s linear infinite; will-change: transform; }
+.caro-viewport:hover .caro-track { animation-play-state: paused; }
+@keyframes caro { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.caro-card {
+  position: relative; flex: 0 0 auto; width: 266px; height: 354px;
+  border-radius: 18px; overflow: hidden; background: var(--bg-soft);
+  box-shadow: var(--shadow); transition: transform 0.3s ease;
+}
+.caro-card:hover { transform: translateY(-6px) scale(1.02); }
+.caro-card img, .caro-card video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.caro-play {
+  position: absolute; inset: 0; display: grid; place-items: center;
+  color: #fff; background: rgba(20,20,22,0.28); transition: opacity 0.3s ease; pointer-events: none;
+}
+.caro-play span {
+  width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--mustard); color: var(--ink); font-size: 1.1rem; padding-left: 3px;
+}
+.caro-video:hover .caro-play { opacity: 0; }
+@media (max-width: 560px) {
+  .caro-card { width: 200px; height: 280px; }
+  .caro-section { padding: 60px 0; }
+}
+
 /* ---------- Image with mustard border ---------- */
 .framed-mustard { border: 10px solid var(--mustard); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
 .framed-mustard img { width: 100%; height: 100%; object-fit: cover; display: block; }

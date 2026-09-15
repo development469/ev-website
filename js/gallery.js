@@ -62,6 +62,36 @@ function initSlider() {
   }, 3800)
 }
 
+// ---- Render the media carousel (duplicated set for a seamless loop) ----
+function caroCardHTML(item) {
+  if (item.type === 'video') {
+    return `<div class="caro-card caro-video">
+      <video src="${item.src}" poster="${item.poster}" muted loop playsinline preload="none"></video>
+      <div class="caro-play"><span>&#9658;</span></div>
+    </div>`
+  }
+  return `<div class="caro-card"><img src="${item.src}" alt="ev in the studio" loading="lazy" /></div>`
+}
+function renderCarousel(trackId, items) {
+  const track = document.getElementById(trackId)
+  if (!track || !items || !items.length) return
+  const set = items.map(caroCardHTML).join('')
+  track.innerHTML = set + set // two identical sets => translateX(-50%) loops seamlessly
+}
+
+// ---- Carousel videos: autoplay on hover, pause/reset on leave ----
+function initCarouselVideos() {
+  document.querySelectorAll('.caro-card video').forEach((v) => {
+    const card = v.closest('.caro-card')
+    const play = () => { const p = v.play(); if (p && p.catch) p.catch(() => {}) }
+    const stop = () => { v.pause() }
+    card.addEventListener('mouseenter', play)
+    card.addEventListener('mouseleave', stop)
+    // touch: tap toggles play on mobile
+    card.addEventListener('touchstart', () => { v.paused ? play() : stop() }, { passive: true })
+  })
+}
+
 // ---- Scroll reveal ----
 function initReveal() {
   const els = document.querySelectorAll('.reveal')
@@ -102,8 +132,11 @@ document.addEventListener('DOMContentLoaded', () => {
     navLinks.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => navLinks.classList.remove('open')))
   }
 
+  if (typeof CARO_ITEMS !== 'undefined') renderCarousel('caro-track', CARO_ITEMS)
+
   initTypewriter()
   initSlider()
+  initCarouselVideos()
   initScrollUI()
   initReveal()
 })
