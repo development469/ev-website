@@ -412,6 +412,18 @@ form.contact-form button { align-self: flex-start; border: none; cursor: pointer
 .cta { border-radius: var(--radius); padding: 70px 8%; text-align: center; }
 .cta h2 { font-size: clamp(2rem, 5vw, 3.6rem); margin: 0 0 26px; }
 
+/* ---------- Certifications: scrolling logo marquee ---------- */
+.cert-marquee {
+  width: 100%; overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.cert-track { display: flex; align-items: center; width: max-content; animation: marquee 42s linear infinite; will-change: transform; }
+.cert-marquee:hover .cert-track { animation-play-state: paused; }
+.cert-track img { height: 112px; width: auto; flex: 0 0 auto; object-fit: contain; margin-right: 68px; transition: transform 0.3s ease; }
+.cert-track img:hover { transform: scale(1.08); }
+@media (max-width: 560px) { .cert-track img { height: 84px; margin-right: 44px; } }
+
 /* ---------- Certifications ---------- */
 .badges { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
 .badge { display: inline-flex; align-items: center; gap: 9px; padding: 12px 20px; border-radius: 999px; background: #fff; border: 2px solid var(--ink); font-family: var(--font-display); font-weight: 600; font-size: 0.85rem; }
