@@ -86,7 +86,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing:
 .site-header.scrolled { border-color: var(--line); box-shadow: 0 6px 24px rgba(20, 20, 22, 0.05); }
 .site-header .wrap { display: flex; align-items: center; justify-content: space-between; height: 88px; }
 
-.logo { font-family: var(--font-logo); font-size: 2.1rem; line-height: 1; display: inline-flex; align-items: baseline; }
+.logo { font-family: var(--font-logo); font-size: 2.7rem; line-height: 1; display: inline-flex; align-items: baseline; }
 .logo-e { color: var(--logo-e); }
 .logo-v { color: var(--logo-v); }
 .logo-home { font-family: var(--font-logo); font-size: 0.5em; color: #000; margin-left: 0.16em; align-self: flex-end; padding-bottom: 0.16em; }
