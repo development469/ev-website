@@ -92,6 +92,21 @@ function initCarouselVideos() {
   })
 }
 
+// ---- Panel sliders (cross-fade background images) ----
+function initPanelSliders() {
+  document.querySelectorAll('.panel-slider').forEach((sl) => {
+    const slides = [...sl.querySelectorAll('.pslide')]
+    if (slides.length < 2) { if (slides[0]) slides[0].classList.add('active'); return }
+    slides[0].classList.add('active')
+    let i = 0
+    setInterval(() => {
+      slides[i].classList.remove('active')
+      i = (i + 1) % slides.length
+      slides[i].classList.add('active')
+    }, 3500)
+  })
+}
+
 // ---- Scroll reveal ----
 function initReveal() {
   const els = document.querySelectorAll('.reveal')
@@ -136,6 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initTypewriter()
   initSlider()
+  initPanelSliders()
   initCarouselVideos()
   initScrollUI()
   initReveal()
