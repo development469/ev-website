@@ -430,12 +430,12 @@ form.contact-form button { align-self: flex-start; border: none; cursor: pointer
 .badge span { font-size: 1.1rem; }
 
 /* ---------- Footer ---------- */
-.site-footer { background: var(--ink); color: #fff; }
+.site-footer { background: #4a1620; color: #fff; }
 .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; padding: 80px 0 44px; }
 .footer-grid .brand { font-family: var(--font-logo); font-size: 2.4rem; line-height: 1; display: inline-flex; align-items: baseline; margin: 0 0 16px; }
 .footer-grid .brand .logo-e { color: #fff; } .footer-grid .brand .logo-v { color: #7d7d84; } .footer-grid .brand .logo-home { color: #fff; }
 .footer-grid .tag { color: rgba(255,255,255,0.66); max-width: 32ch; }
-.footer-grid .col-title { font-family: var(--font-display); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mint); margin-bottom: 16px; }
+.footer-grid .col-title { font-family: var(--font-display); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 16px; }
 .footer-grid ul { list-style: none; margin: 0; padding: 0; }
 .footer-grid li { margin-bottom: 10px; }
 .footer-grid a, .footer-grid p { color: rgba(255,255,255,0.78); }
