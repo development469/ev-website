@@ -348,7 +348,10 @@ section { padding: 100px 0; }
 .bcta { position: relative; border-radius: 24px; overflow: hidden; min-height: 380px; display: flex; align-items: center; background-color: #b5613a; background-size: cover; background-position: center; }
 .bcta::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(120,52,30,0.78) 0%, rgba(120,52,30,0.45) 45%, rgba(120,52,30,0.05) 78%); }
 .bcta-inner { position: relative; padding: 60px 8%; color: #fff; max-width: 560px; }
-.bcta-inner h2 { color: #fff; font-size: clamp(2.1rem, 4.4vw, 3.4rem); margin: 0 0 26px; }
+.bcta-inner .eyebrow { color: #fff; margin-bottom: 14px; }
+.bcta-inner .eyebrow::before { background: #fff; }
+.bcta-inner h2 { color: #fff; font-size: clamp(2.1rem, 4.4vw, 3.4rem); margin: 0 0 16px; }
+.bcta-inner p { color: rgba(255,255,255,0.9); font-size: 1.02rem; margin: 0 0 26px; max-width: 34ch; }
 @media (max-width: 560px) { .bcta { min-height: 320px; } .bcta::before { background: linear-gradient(180deg, rgba(120,52,30,0.5), rgba(120,52,30,0.82)); } }
 
 /* ---------- Page hero (inner) ---------- */
