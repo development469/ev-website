@@ -94,16 +94,19 @@
         <a href="mailto:adi@evhome.in" style="color:var(--coral);">adi@evhome.in</a>
         <a href="https://www.evhome.in" target="_blank" rel="noopener" style="color:var(--coral);">www.evhome.in</a>
       </div>
-      <form class="contact-form reveal">
+      <form class="contact-form reveal" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact" />
+        <p hidden><label>Don’t fill this out if you’re human: <input name="bot-field" /></label></p>
         <div class="row">
-          <div><label for="name">Name</label><input id="name" name="name" type="text" placeholder="Your name" /></div>
-          <div><label for="email">Email</label><input id="email" name="email" type="email" placeholder="you@example.com" /></div>
+          <div><label for="name">Name</label><input id="name" name="name" type="text" placeholder="Your name" required /></div>
+          <div><label for="email">Email</label><input id="email" name="email" type="email" placeholder="you@example.com" required /></div>
         </div>
         <div><label for="subject">I’m interested in</label><input id="subject" name="subject" type="text" placeholder="Collection · Bespoke · Export / wholesale" /></div>
-        <div><label for="message">Message</label><textarea id="message" name="message" rows="5" placeholder="Tell us what you have in mind…"></textarea></div>
+        <div><label for="message">Message</label><textarea id="message" name="message" rows="5" placeholder="Tell us what you have in mind…" required></textarea></div>
         <button type="submit" class="btn btn-coral">Send message <span class="arrow">→</span></button>
       </form>
-      <!-- TODO: wire this form to an email service / Netlify Forms once enquiry routing is confirmed -->
+      <!-- Netlify Forms: works once deployed on Netlify. Submissions appear in Netlify dashboard > Forms;
+           set an email notification to adi@evhome.in in Site settings > Forms > Form notifications. -->
     </div>
   </section>
 </main>
