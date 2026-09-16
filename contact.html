@@ -36,37 +36,67 @@
 </header>
 
 <main>
-  <section class="page-hero">
-    <div class="wrap">
-      <span class="eyebrow">Say hello</span>
-      <h1 class="reveal">Let’s make something for your <span style="color:var(--coral);">home.</span></h1>
-      <p class="reveal d1">Questions, bespoke enquiries, export &amp; wholesale — we’d love to hear from you.</p>
+  <!-- CONTACT HERO -->
+  <section class="contact-hero">
+    <div class="wrap contact-hero-grid">
+      <div class="contact-hero-copy reveal">
+        <span class="eyebrow">Get in touch</span>
+        <h1>Let’s create<br>something<br><span style="color:var(--coral);">beautiful.</span></h1>
+        <p>For bespoke enquiries, wholesale partnerships and everything in between.</p>
+        <a class="btn btn-coral" href="#enquiry">Start a conversation <span class="arrow">→</span></a>
+      </div>
+      <div class="contact-hero-media reveal d1">
+        <img src="images/bespoke/cta-bg.webp" alt="ev homeware styled on a console" />
+      </div>
     </div>
   </section>
 
-  <section style="padding-top:20px;">
-    <div class="wrap">
-      <div class="contact-grid">
-        <div class="contact-card reveal">
-          <p class="label">Office</p>
-          <p>3/c 140, Budhi Vihar<br />Avas Vikas Colony<br />Majhola, Delhi Road<br />Moradabad — 244001, India</p>
+  <!-- CONTACT CARDS -->
+  <section class="contact-cards-sec" style="padding-top:0;">
+    <div class="wrap contact-cards">
+      <div class="cc reveal">
+        <div class="cc-icon cc-yellow">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22 24 10l16 12"/><path d="M12 20v18h24V20"/><path d="M21 38v-9h6v9"/></svg>
         </div>
-        <div class="contact-card reveal d1">
-          <p class="label">Factory</p>
-          <p><strong>Unit 1</strong><br />C/O Paragon Metal Industries<br />Lakri Fazalpur, Mini Bypass Road<br />Moradabad — 244001, India<br />Phone: +91-591-2484619</p>
-          <p style="margin-top:14px;"><strong>Unit 2</strong><br />Sector Phase 2, Block B-142<br />Noida — 201305, India</p>
-        </div>
-        <div class="contact-card reveal d2">
-          <p class="label">Showroom</p>
-          <p>A 06/02-06,<br />India Expo Centre &amp; Mart<br />Greater Noida, India</p>
+        <div class="cc-body">
+          <p class="cc-title">Office</p>
+          <p class="cc-addr">3/C 140 Budhi Vihar<br>Avas Vikas Colony<br>Majhola, Delhi Road<br>Moradabad — 244001, India</p>
+          <a class="cc-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=3%2Fc+140+Budhi+Vihar+Avas+Vikas+Colony+Majhola+Moradabad+244001">Get directions <span class="arrow">→</span></a>
         </div>
       </div>
 
-      <div class="reveal" style="margin-bottom:36px;display:flex;gap:14px 30px;flex-wrap:wrap;font-family:var(--font-display);font-weight:600;font-size:1.02rem;">
+      <div class="cc reveal d1">
+        <div class="cc-icon cc-sage">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 40V22l9 6v-6l9 6V14h14v26z"/><path d="M34 14V9"/><path d="M14 40v-6M22 40v-6M30 40v-6"/></svg>
+        </div>
+        <div class="cc-body">
+          <p class="cc-title">Factory</p>
+          <p class="cc-addr"><strong>Unit 1</strong> — C/O Paragon Metal Industries, Lakri Fazalpur, Mini Bypass Road, Moradabad — 244001 · +91-591-2484619<br><strong>Unit 2</strong> — Sector Phase 2, Block B-142, Noida — 201305, India</p>
+          <a class="cc-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Lakri+Fazalpur+Mini+Bypass+Road+Moradabad+244001">Get directions <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <div class="cc reveal d2">
+        <div class="cc-icon cc-blue">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 40V22a12 12 0 0 1 24 0v18"/><path d="M7 40h34"/><path d="M24 40V24"/></svg>
+        </div>
+        <div class="cc-body">
+          <p class="cc-title">Showroom</p>
+          <p class="cc-addr">A 06/02-06<br>India Expo Centre &amp; Mart<br>Greater Noida, India</p>
+          <a class="cc-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=India+Expo+Centre+Mart+Greater+Noida">Get directions <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENQUIRY FORM -->
+  <section id="enquiry" style="padding-top:20px;">
+    <div class="wrap">
+      <div class="section-head reveal"><h2 class="section-title">Send us a <span class="mark">message.</span></h2></div>
+      <div class="reveal" style="margin:-24px 0 30px;display:flex;gap:14px 30px;flex-wrap:wrap;font-family:var(--font-display);font-weight:600;">
         <a href="mailto:adi@evhome.in" style="color:var(--coral);">adi@evhome.in</a>
         <a href="https://www.evhome.in" target="_blank" rel="noopener" style="color:var(--coral);">www.evhome.in</a>
       </div>
-
       <form class="contact-form reveal">
         <div class="row">
           <div><label for="name">Name</label><input id="name" name="name" type="text" placeholder="Your name" /></div>

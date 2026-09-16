@@ -3,24 +3,63 @@
 
 function pad(n) { return String(n).padStart(2, '0') }
 
-function tileHTML(item, i, href) {
+function tileHTML(item, i) {
   const media = item.image
     ? `<img src="${item.image}" alt="${item.name}" loading="lazy" />`
     : `<div class="image-placeholder">${item.name}<br>photo pending</div>`
   const cat = item.category ? `<span class="cat">${item.category}</span>` : ''
-  return `<a class="tile reveal" href="${href}">
+  return `<div class="tile reveal" role="button" tabindex="0" data-img="${item.image || ''}" data-name="${item.name}">
     <div class="thumb"><span class="num">${pad(i + 1)}</span>${media}</div>
     <div class="meta">
       <span class="txt">${cat}<span class="name">${item.name}</span></span>
       <span class="go">&#8599;</span>
     </div>
-  </a>`
+  </div>`
 }
 
-function renderGallery(containerId, items, href = 'collection.html') {
+function renderGallery(containerId, items) {
   const el = document.getElementById(containerId)
   if (!el) return
-  el.innerHTML = items.map((it, i) => tileHTML(it, i, href)).join('')
+  el.innerHTML = items.map((it, i) => tileHTML(it, i)).join('')
+}
+
+// ---- Product "Polaroid" expand modal ----
+function initProductModal() {
+  const grids = document.querySelectorAll('.gallery-grid')
+  if (!grids.length) return
+  const modal = document.createElement('div')
+  modal.className = 'pmodal'
+  modal.hidden = true
+  modal.innerHTML = `
+    <div class="pmodal-backdrop"></div>
+    <div class="pmodal-card" role="dialog" aria-modal="true" aria-label="Product">
+      <button class="pmodal-close" aria-label="Close">&times;</button>
+      <div class="pmodal-img"><img alt="" /></div>
+      <div class="pmodal-cap">
+        <p class="pmodal-tag">Made to Order &middot; Bespoke</p>
+        <p class="pmodal-name"></p>
+        <p class="pmodal-sub">Exclusively Curated</p>
+        <a class="btn btn-coral" href="contact.html">Contact us <span class="arrow">&rarr;</span></a>
+      </div>
+    </div>`
+  document.body.appendChild(modal)
+  const img = modal.querySelector('.pmodal-img img')
+  const name = modal.querySelector('.pmodal-name')
+  const open = (src, nm) => { if (!src) return; img.src = src; img.alt = nm || ''; name.textContent = nm || ''; modal.hidden = false; document.body.style.overflow = 'hidden' }
+  const close = () => { modal.hidden = true; document.body.style.overflow = '' }
+  modal.querySelector('.pmodal-backdrop').addEventListener('click', close)
+  modal.querySelector('.pmodal-close').addEventListener('click', close)
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.hidden) close() })
+  grids.forEach((g) => {
+    g.addEventListener('click', (e) => {
+      const t = e.target.closest('.tile'); if (!t) return
+      open(t.dataset.img, t.dataset.name)
+    })
+    g.addEventListener('keydown', (e) => {
+      const t = e.target.closest('.tile')
+      if (t && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); open(t.dataset.img, t.dataset.name) }
+    })
+  })
 }
 
 function renderBadges(containerId, items) {
@@ -149,6 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (typeof CARO_ITEMS !== 'undefined') renderCarousel('caro-track', CARO_ITEMS)
 
+  initProductModal()
   initTypewriter()
   initSlider()
   initPanelSliders()
